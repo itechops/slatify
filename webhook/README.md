@@ -1,5 +1,4 @@
 
-[![N|Solid](http://support.itech.md/__swift/files/file_y0x6eryxhsp9es0.jpg)](http://support.itech.md)
 # Slatify webhook
 bash scripts, to send messages to slack via webhook
 
@@ -27,12 +26,12 @@ Remove `-v` parameter for no output.
 HINT!:  `-h HOOK` is mandatory parameter, but you can set default Hook url [here][3] and omit it for default hook :)
 
 ### Contacts and feenback 
-Feel free to [mail][2] me any feedback, suggestion of for collaboration 
+Feel free to [mail][2] me any feedback, suggestion or for collaboration 
 
 Cheers
 
 [1]:https://api.slack.com/incoming-webhooks
-[2]:mailto:support@itech.md?subject=Slatify
+[2]:mailto:slatify@itech.md?subject=Slatify
 [3]:https://github.com/itechops/slatify/blob/dev/webhook/slatify-webhook.sh#L10
 
 
