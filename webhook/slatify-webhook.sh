@@ -3,7 +3,7 @@
 ########################################
 #  slatify-webhook.sh
 #  Send message to SLACK via webhook
-#  iTech SRL, support@itech.md
+#  iTech SRL, slatify@itech.md
 ########################################
 
 # Defning default variables
@@ -25,7 +25,7 @@ print_usage() {
     echo "Icons tested: INFO, WARNING, ERROR. Default is INFO. Feel free to try another icons"
     echo "Feel free to add/modify script, or contact me for assistance"
     echo 
-    echo "iTech SRL, support@itech.md"  
+    echo "iTech SRL, slatify@itech.md"  
     echo
     echo "HINT! quote message to use it as single string."
     
