@@ -7,8 +7,6 @@ Here you find simple and useful solutions for sending messages to [Slack][2] aut
 
 If something is missing, [mail me][1], I'll do my best to compensate it. And new solutions are comming.
 
-[TOC]
-
 Send message 
 ---
 
