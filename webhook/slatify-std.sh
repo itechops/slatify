@@ -8,6 +8,9 @@
 
 SCRIPT="$@"
 
+# CHANGE THIS !!!
+SLACK_URL=https://hooks.slack.com/services/AAAAAAAA/BBBBBBBBBB/CCCCCCCCCCCCCCCCCCCCCC
+
 setval() {
     printf -v "$1" "%s" "$(cat)"; declare -p "$1";
 }
@@ -15,7 +18,6 @@ setval() {
 post_to_slack () {
     # format message as a code block ```${msg}```
     SLACK_MESSAGE="\`\`\`$1\`\`\`"
-    SLACK_URL=https://hooks.slack.com/services/AAAAAAAA/BBBBBBBBBB/CCCCCCCCCCCCCCCCCCCCCC
 
     case "${SLACK_MESSAGE}" in
         *INFO*)     SLACK_ICON=':slack:' ;;
