@@ -1,5 +1,11 @@
 #!/bin/bash
 
+########################################
+# slatify-std.sh
+# Get output, analyse it and send notifications to Slack
+# iTech SRL, slatify@itech.md
+########################################
+
 SCRIPT="$@"
 
 setval() {
@@ -9,7 +15,7 @@ setval() {
 post_to_slack () {
     # format message as a code block ```${msg}```
     SLACK_MESSAGE="\`\`\`$1\`\`\`"
-    SLACK_URL=https://hooks.slack.com/services/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
+    SLACK_URL=https://hooks.slack.com/services/AAAAAAAA/BBBBBBBBBB/CCCCCCCCCCCCCCCCCCCCCC
 
     case "${SLACK_MESSAGE}" in
         *INFO*)     SLACK_ICON=':slack:' ;;
