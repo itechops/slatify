@@ -1,4 +1,3 @@
-
 # Slatify webhook
 bash scripts, to send messages to slack via webhook
 
