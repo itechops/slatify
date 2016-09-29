@@ -21,28 +21,28 @@ Don't worry about main script language, `slatify-std.sh` acepts any scritps, whi
 
 # Examples
 Simple job :
-```bash
+```{r, engine='bash', count_lines}
 $> ./myjob.sh
 ```
 Slatified job:
-```bash
+```{r, engine='bash', count_lines}
 $> /path/to/slatify-std.sh ./myjob.sh
 ```
 
 Simple PHP script:
-```bash
+```{r, engine='bash', count_lines}
 $> php ./my_php_job.php
 ```
 Slatified PHP script:
-```bash
+```{r, engine='bash', count_lines}
 $> /path/to/slatify-std.sh php ./my_php_job.php
 ```
 Simple script with arguments and sudo
-```bash
+```{r, engine='bash', count_lines}
 $> sudo -H -u john bash -c /path_to_script/john_s_script.sh
 ```
 Slatified ...:
-```bash
+```{r, engine='bash', count_lines}
 $> /path/to/slatify-std.sh sudo -H -u john bash -c /path_to_script/john_s_script.sh
 ```
 
