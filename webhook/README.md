@@ -2,7 +2,7 @@
 # Slatify webhook
 bash scripts, to send messages to slack via webhook
 
-- slatify-webhook.sh - send simple message to slack. Please run with --help to see usage information.
+- slatify-webhook.sh - send simple message to slack. Please run with --help to see usage information, or read small [description][5].
 - slatify-std.sh - captures both, STDOUT and STDERR, then sends notification to Slack. Please find [details here][4].
 
 ### Install
@@ -11,7 +11,7 @@ bash scripts, to send messages to slack via webhook
 - ensure that script is executable 
 
 ### Usage
-Each script has help section, just run it to see help. Add parametres to send message to slack. 
+Most scripts have help section. Anyway, you can read short desctiption in the top of this page, or detailed descriptions in separate readme files.
 
 ### Examples
 Run script with *verbose* output 
@@ -35,4 +35,5 @@ Cheers
 [2]:mailto:slatify@itech.md?subject=Slatify
 [3]:https://github.com/itechops/slatify/blob/dev/webhook/slatify-webhook.sh#L10
 [4]:https://github.com/itechops/slatify/blob/master/webhook/README-slatify-std.md
+[4]:https://github.com/itechops/slatify/blob/master/webhook/README-slatify-webhook.md
 
