@@ -1,5 +1,5 @@
 # slatify-std.sh
-This script captures both, normal and error, outputs from another script execution. 
+This script captures both, normal and error, outputs from another script execution.
 When all output is already captured (main script finished), `slatify_std.sh` sends output to [Slack][2]. But not all output. 
 
 `slatify_std.sh` analyses STDOUT and STDERR separately. `slatify_std.sh` is looking for informative patterns in STDOUT and if find them, sends message to [Slack][2].
