@@ -1,12 +1,12 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 ########################################
-# slatify-std.sh
-# Get output, analyse it and send notifications to Slack
-#
+# slatify-burp.sh
+# Get output, analyse it and send warnings notifications to Slack
+# 
 ########################################
 
-# Define lib folder and libs to load 
+# Define lib folder and libs to load
 LIBFOLDER='lib'
 IMPORTLIBS=(
     lib_get_conf.sh
@@ -25,13 +25,10 @@ done
 
 # Load profiles
 eval $(get_profile_settings .slatify slack)
-eval $(get_profile_settings .slatify std)
+eval $(get_profile_settings .slatify burp)
 
 # Predefined wariables
-STD='all'
-
-SCRIPT="$@"
-ME=$0
+TODAY=$(date "+%Y-%m-%d")
 
 #----------------------------------------------------------#
 #                     Functions                            #
@@ -47,39 +44,10 @@ print_usage() {
     exit 1
 }
 
-# FUNCTIONS
-post_to_slack () {
-
-    payload="{
-        \"username\": \"std${STD}\",
-        \"channel\": \"${channel}\",
-        \"attachments\": [ {
-            \"fallback\": \"std${STD}\",
-            \"color\": \"${COLOR}\",
-            \"fields\":[
-                {
-                    \"value\":\"${ROW}\",
-                    \"short\":true
-                }
-            ]
-        } ]
-    }"
-
-    curl -s -X POST --data "payload=${payload}" ${HOOK} >/dev/null 2>&1
-}
-
-read_std() {
-    while read -r ROW; do
-        post_to_slack "${ROW}"
-    done
-}
-
 # Translating argument to --gnu-long-options
 for arg; do
     delim=""
     case "${arg}" in
-        --out)                        args="${args}-o " ;;
-        --err)                        args="${args}-e " ;;
         --channel)                    args="${args}-c " ;;
         --warn)                       args="${args}-w " ;;
         --help)                       args="${args}-H " ;;
@@ -90,19 +58,47 @@ done
 eval set -- "$args"
 
 # Parsing arguments
-while getopts "oec:w:H" Option; do
+while getopts "c:w:H" Option; do
     case ${Option} in
-        o) STD='out' ; COLOR='good' ;;
-        e) STD='err' ; COLOR='danger' ;;
         c) channel=${OPTARG} ;;
         w) warn=${OPTARG} ;;
         *) print_usage; check_result 1 "bad args" ;;
     esac
 done
 
-case "${STD}" in
-    all)       ./${SCRIPT} 2> >(${ME} --err) > >(${ME} --out);;
-    out|err)   read_std;;
-esac
+post_to_slack () {
+    COLOR="$1"
+
+    payload="{
+        \"username\": \"BURP report ${TODAY}\",
+        \"channel\": \"${channel}\",
+        \"attachments\": [ {
+            \"fallback\": \"BURP backup freshness\",
+            \"color\": \"${COLOR}\",
+            \"fields\":[
+                {
+                    \"value\":\"<${title_link}|${server}>\",
+                    \"short\":true
+                },
+                {
+                    \"value\":\"${date}\",
+                    \"short\":true
+                }
+            ]
+        } ]
+    }"
+  
+    curl -s -X POST --data "payload=${payload}" ${HOOK} >/dev/null 2>&1
+}
+
+${burp} -a S | grep -v "burp status" | grep . | while read -r line; do
+    server=$(echo ${line} | awk '{print $1}')
+    date=$(echo ${line} | grep -o "[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]")
+    date_diff=$(( ($(date --date="${TODAY}" +%s) - $(date --date="${date}" +%s) )/(60*60*24) ))
+    if [ "${date_diff}" -ge "${warn}" ]; then
+        color='danger'
+        post_to_slack "${color}" "${server}" "${date}"
+    fi
+done
 
 exit 0

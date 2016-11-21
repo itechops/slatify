@@ -12,7 +12,7 @@ This was scripted according to customer requirements.
 Oh! the most impotant thing. This script ***doesn't create temporary files.*** 
 
 # Installation
-Just copy this script. It requires *bash* and nothing else. Ah! *webhook URL*! Don't forget to get it from slack, and set into ***SLACK_URL*** variable inside the script.
+Just copy this script. It requires *bash* and nothing else. Ah! *webhook URL*! Don't forget to get it from slack, and set into ***HOOK*** variable inside the script.
 
 # Usage 
 To capture stdout and stderr separately, we have to execute main script inside of `slatify-std.sh`. Just add `./slatify-std.sh` in front of your script, and you'll see result in [Slack][2]. 
