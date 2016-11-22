@@ -93,7 +93,7 @@ post_to_slack () {
         \"username\": \"${slack_user}\",
         \"channel\": \"${channel}\",
         \"attachments\": [ {
-            \"fallback\": \"\",
+            \"fallback\": \"${fallback}\",
             \"color\": \"${color}\",
             \"fields\":[
                 {
@@ -121,6 +121,7 @@ short='true'
  
 if [ -n "${m_service}" ]; then
     value_c1="<${nagios_domain}/cgi-bin/extinfo.cgi?type=2%26host=${m_host}%26service=${m_service}|${m_host}/${m_service}> is ${m_state}" ;
+    fallback="${m_host}/${m_service} is ${m_state}" ;
     case "${m_state}" in
         OK)
             value_c2='' ; 
@@ -142,6 +143,7 @@ if [ -n "${m_service}" ]; then
     esac
 else
     value_c1="Host <${nagios_domain}/cgi-bin/status.cgi?host=${m_host}|${m_host}> is ${m_state}" ;
+    fallback="${m_host} is ${m_state}" ;
     case "${m_state}" in
         UP)
             value_c2='' ;
