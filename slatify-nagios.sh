@@ -137,7 +137,7 @@ if [ -n "${m_service}" ]; then
     esac
     case "${m_type}" in
         ACKNOWLEDGEMENT)  
-            value_c1="${m_host}/${m_service} is ACKNOWLEDGED" ;
+            value_c1="<${nagios_domain}/cgi-bin/extinfo.cgi?type=2%26host=${m_host}%26service=${m_service}|${m_host}/${m_service}> is ACKNOWLEDGED" ;
             value_c2='' ;
             color="${ACKNOWLEDGEMENT}" ; 
             short='false';
@@ -160,7 +160,7 @@ else
     esac
     case "${m_type}" in
         ACKNOWLEDGEMENT)
-            value_c1="${m_host}/${m_state} is ACKNOWLEDGED" ;
+            value_c1="<${nagios_domain}/cgi-bin/status.cgi?host=${m_host}|${m_host}>/${m_state} is ACKNOWLEDGED" ;
             value_c2='' ;
             color="${ACKNOWLEDGEMENT}" ; 
             short='false';
