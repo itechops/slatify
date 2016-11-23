@@ -2,7 +2,7 @@
 
 ########################################
 # slatify-nagios.sh
-# Send nagios notifications to slack
+# Send nagios notifications to slack 
 # 
 ########################################
 
