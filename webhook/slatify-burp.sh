@@ -6,8 +6,9 @@
 # 
 ########################################
 
+SLATIFY_DIR=$(dirname $0)
 # Define lib folder and libs to load
-LIBFOLDER='lib'
+LIBFOLDER="${SLATIFY_DIR}/lib"
 IMPORTLIBS=(
     lib_get_conf.sh
 )
@@ -24,8 +25,10 @@ for libfile in ${IMPORTLIBS[*]}; do
 done
 
 # Load profiles
-eval $(get_profile_settings .slatify slack)
-eval $(get_profile_settings .slatify burp)
+eval $(get_profile_settings ${HOME}/.slatify slack)
+eval $(get_profile_settings ${HOME}/.slatify burp)
+eval $(get_profile_settings ${SLATIFY_DIR}/.slatify slack)
+eval $(get_profile_settings ${SLATIFY_DIR}/.slatify burp)
 
 # Predefined wariables
 TODAY=$(date "+%Y-%m-%d")
