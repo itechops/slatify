@@ -25,6 +25,8 @@ for libfile in ${IMPORTLIBS[*]}; do
 done
 
 # Load profiles
+eval $(get_profile_settings ${HOME}/.slatify slack)
+eval $(get_profile_settings ${HOME}/.slatify nagios)
 eval $(get_profile_settings ${SLATIFY_DIR}/.slatify slack)
 eval $(get_profile_settings ${SLATIFY_DIR}/.slatify nagios)
 
