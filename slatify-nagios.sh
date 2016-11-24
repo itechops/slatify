@@ -93,6 +93,7 @@ post_to_slack () {
 
     payload="{
         \"username\": \"${slack_user}\",
+        \"icon_emoji\": \"${icon_emoji}\",
         \"channel\": \"${channel}\",
         \"attachments\": [ {
             \"fallback\": \"${fallback}\",
