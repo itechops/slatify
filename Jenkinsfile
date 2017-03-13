@@ -28,12 +28,12 @@ node {
 
       case "dev":
         sh("echo Sync development package")
-        sh("rsync -avr -e 'ssh -p 3212' scripts/ mgmt.itech.md:/usr/local/sbin/slatify-dev/")
+        sh("rsync -avr -e 'ssh -p 3212' scripts/ slatify@mgmt.itech.md:/usr/local/sbin/slatify-dev/")
         break
 
       case "master":
         sh("echo Sync prod package")
-        sh("rsync -avr -e 'ssh -p 3212' scripts/ mgmt.itech.md:/usr/local/sbin/slatify/")
+        sh("rsync -avr -e 'ssh -p 3212' scripts/ slatify@mgmt.itech.md:/usr/local/sbin/slatify/")
         break
 
       default:
