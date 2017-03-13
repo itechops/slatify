@@ -48,13 +48,13 @@ node {
 
       case "dev":
         sh("echo Deploy development package")
-        sh("deploy/deploy.sh")
-          break
+        # sh("deploy/deploy.sh")
+        break
 
       case "master":
         sh("echo Deploying to production")
-        sh("deploy/deploy.sh")
-          break
+        # sh("deploy/deploy.sh")
+        break
 
       default:
         sh("echo Continuous deployment is only enabled on the develop branch")
