@@ -5,7 +5,9 @@ node('Slatify') {
     def workspace = pwd()
     env.ENV = 'local'
 
-    sh("echo BRANCH ${branchName}")
-    sh("echo workspace ${workspace}")
+    sh 'echo BRANCH ${branchName}"'
+    sh 'echo workspace ${workspace}"'
+
+
 }
 
