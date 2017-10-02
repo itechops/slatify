@@ -1,4 +1,5 @@
 # Slatify
+
 There are many notification and communication systems. You can choose any of them. I chose [Slack][2] for communication, then I integrated notifications.
 
 This repository is dedicated to sending messages to [Slack][2].
